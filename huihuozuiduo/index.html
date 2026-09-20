@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="挥霍最多的成语大全，包含挥金如土、一掷千金等成语的详细释义、典故来源及近义词辨析。">
+    <meta name="keywords" content="挥霍最多的成语,挥金如土,一掷千金,形容浪费的成语,成语词典">
+    <title>挥霍最多的成语-常用成语释义与典故分析</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #d35400;
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-main: #333333;
+            --text-secondary: #666666;
+            --border-radius: 8px;
+            --spacing-unit: 1rem;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
+            line-height: 1.6;
+            color: var(--text-main);
+            background-color: var(--bg-color);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Header & Nav */
+        header {
+            background-color: var(--card-bg);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 64px;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--accent-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #4a69bd 100%);
+            color: white;
+            padding: 3rem 1rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Main Content */
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        /* Section Layout */
+        .section-header {
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--accent-color);
+            padding-left: 1rem;
+        }
+
+        .section-header h2 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .section-header p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-top: 0.25rem;
+        }
+
+        /* Grid Layouts */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        /* Card Styles */
+        .card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: 1px solid #eaeaea;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.08);
+        }
+
+        .card-header {
+            padding: 1.25rem;
+            border-bottom: 1px solid #f0f0f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .card-badge {
+            background-color: #fff3e0;
+            color: var(--accent-color);
+            padding: 0.25rem 0.6rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .card-body {
+            padding: 1.25rem;
+        }
+
+        .idiom-content {
+            margin-bottom: 1rem;
+        }
+
+        .idiom-pinyin {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            font-family: "KaiTi", "STKaiti", serif;
+        }
+
+        .idiom-def {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            line-height: 1.5;
+        }
+
+        .idiom-source {
+            font-size: 0.85rem;
+            color: #888;
+            border-top: 1px solid #f5f5f5;
+            padding-top: 0.5rem;
+        }
+
+        .idiom-source strong {
+            color: var(--primary-color);
+        }
+
+        .idiom-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tag {
+            background-color: #f0f2f5;
+            color: var(--text-secondary);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+
+        /* Comparison Table */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+
+        .comparison-table th, .comparison-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .comparison-table th {
+            background-color: #f8f9fa;
+            font-weight: 600;
+            color: var(--primary-color);
+            width: 25%;
+        }
+
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .comparison-table tr:hover {
+            background-color: #fafafa;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: #bdc3c7;
+            padding: 3rem 1rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-col h3 {
+            color: white;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-col a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                height: auto;
+                padding: 1rem;
+            }
+            nav ul {
+                margin-top: 1rem;
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            .comparison-table th, .comparison-table td {
+                padding: 0.75rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="nav-container">
+        <a href="#" class="logo">
+            <span>成语</span>词典
+        </a>
+        <nav>
+            <ul>
+                <li><a href="#" class="active">首页</a></li>
+                <li><a href="#">成语释义</a></li>
+                <li><a href="#">近义词</a></li>
+                <li><a href="#">反义词</a></li>
+                <li><a href="#">造句示例</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<section class="hero">
+    <h1>挥霍最多的成语</h1>
+    <p>收录形容极度浪费、不知节俭的成语，解析典故与用法，助您精准表达。</p>
+</section>
+
+<main>
+    <!-- Top 3 High Intensity Waste -->
+    <section>
+        <div class="section-header">
+            <h2>最具代表性的挥霍成语</h2>
+            <p>以下成语在形容“花费巨大、毫不吝惜”时最为常用，且在文学作品中出现频率极高。</p>
+        </div>
+        <div class="grid-3">
+            <article class="card">
+                <div class="card-header">
+                    <span class="card-title">挥金如土</span>
+                    <span class="card-badge">最常用</span>
+                </div>
+                <div class="card-body">
+                    <div class="idiom-content">
+                        <div class="idiom-pinyin">huī jīn rú tǔ</div>
+                        <p class="idiom-def">形容极端挥霍，花钱像撒土一样毫不吝惜。</p>
+                        <div class="idiom-source">
+                            <strong>出处：</strong>《通俗常言疏证·货币》引《通俗文》：“挥金如土。”
+                        </div>
+                        <div class="idiom-tags">
+                            <span class="tag">贬义词</span>
+                            <span class="tag">形容花钱</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="card">
+                <div class="card-header">
+                    <span class="card-title">一掷千金</span>
+                    <span class="card-badge">高频率</span>
+                </div>
+                <div class="card-body">
+                    <div class="idiom-content">
+                        <div class="idiom-pinyin">yī zhì qiān jīn</div>
+                        <p class="idiom-def">指用钱满不在乎，一花就是很多钱。</p>
+                        <div class="idiom-source">
+                            <strong>出处：</strong>《晋书·石崇传》。
+                        </div>
+                        <div class="idiom-tags">
+                            <span class="tag">形容豪爽</span>
+                            <span class="tag">贬义倾向</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="card">
+                <div class="card-header">
+                    <span class="card-title">挥霍无度</span>
+                    <span class="card-badge">通用</span>
+                </div>
+                <div class="card-body">
+                    <div class="idiom-content">
+                        <div class="idiom-pinyin">huī huò wú dù</div>
+                        <p class="idiom-def">任意花钱，没有一点节制。</p>
+                        <div class="idiom-source">
+                            <strong>出处：</strong>《资治通鉴·唐纪》。
+                        </div>
+                        <div class="idiom-tags">
+                            <span class="tag">中性偏贬</span>
+                            <span class="tag">强调无度</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- Detailed Analysis -->
+    <section>
+        <div class="section-header">
+            <h2>成语深度辨析</h2>
+            <p>虽然都表示花费巨大，但在侧重点和适用场景上存在细微差别。</p>
+        </div>
+        <div class="comparison-table">
+            <thead>
+                <tr>
+                    <th>成语</th>
+                    <th>侧重点</th>
+                    <th>适用场景</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>挥金如土</strong></td>
+                    <td>强调花钱的动作像撒土一样随意、不在乎，通常带有强烈的轻蔑或批评语气。</td>
+                    <td>多用于批评那些富有的败家子，或者形容某人完全缺乏金钱观念。</td>
+                </tr>
+                <tr>
+                    <td><strong>一掷千金</strong></td>
+                    <td>强调“掷”这个动作的豪爽和“千金”这个数量的巨大，往往带有一种豪侠之气。</td>
+                    <td>既可以用于贬义（败家），也可以用于褒义（为了朋友义气或排场而大方）。</td>
+                </tr>
+                <tr>
+                    <td><strong>挥霍无度</strong></td>
+                    <td>强调“无度”，即没有限度、没有节制，侧重于行为的持续性和失控状态。</td>
+                    <td>侧重于描述一种生活习惯或财务状况，常用于经济分析或道德劝诫。</td>
+                </tr>
+                <tr>
+                    <td><strong>挥霍无度</strong></td>
+                    <td>强调“无度”，即没有限度、没有节制，侧重于行为的持续性和失控状态。</td>
+                    <td>侧重于描述一种生活习惯或财务状况，常用于经济分析或道德劝诫。</td>
+                </tr>
+            </tbody>
+        </div>
+    </section>
+
+    <!-- Other Related Idioms -->
+    <section>
+        <div class="section-header">
+            <h2>其他相关成语</h2>
+            <p>这些成语同样涉及大量花费，但在语境上略有不同。</p>
+        </div>
+        <div class="grid-2">
+            <article class="card">
+                <div class="card-body">
+                    <h3 class="card-title" style="margin-bottom:0.5rem">一掷百万</h3>
+                    <p class="idiom-def">形容极度浪费，花费的金额达到百万级别。多用于形容赌博或豪赌时的场景。</p>
+                </div>
+            </article>
+            <article class="card">
+                <div class="card-body">
+                    <h3 class="card-title" style="margin-bottom:0.5rem">纸醉金迷</h3>
+                    <p class="idiom-def">形容奢侈豪华的享乐生活，虽然不一定直接指花钱，但通过“金迷纸醉”侧面反映了挥霍无度。</p>
+                </div>
+            </article>
+            <article class="card">
+                <div class="card-body">
+                    <h3 class="card-title" style="margin-bottom:0.5rem">锦衣玉食</h3>
+                    <p class="idiom-def">形容生活优裕，穿着华丽的衣服，吃着精美的食物。侧重于享受层面，而非单纯的挥霍行为。</p>
+                </div>
+            </article>
+            <article class="card">
+                <div class="card-body">
+                    <h3 class="card-title" style="margin-bottom:0.5rem">穷奢极侈</h3>
+                    <p class="idiom-def">形容极度奢侈和浪费，超过了限度。程度比“挥金如土”更深，带有强烈的批判色彩。</p>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- Usage Guide -->
+    <section>
+        <div class="section-header">
+            <h2>使用指南与注意事项</h2>
+        </div>
+        <div style="background: white; padding: 2rem; border-radius: 8px; border: 1px solid #eee;">
+            <h3 style="margin-bottom: 1rem; color: var(--primary-color);">如何正确选用？</h3>
+            <p style="margin-bottom: 1rem;">在使用上述成语时，需注意以下几点：</p>
+            <ul style="margin-left: 1.5rem; margin-bottom: 1.5rem; color: var(--text-secondary);">
+                <li><strong>情感色彩：</strong>“挥金如土”、“穷奢极侈”通常带有贬义，用于批评；而“一掷千金”有时可作中性或褒义，用于形容豪爽。</li>
+                <li><strong>对象差异：</strong>“挥金如土”多用于形容人；“一掷百万”多用于形容赌博或商业巨头的投资行为。</li>
+                <li><strong>语境搭配：</strong>不要将“挥金如土”与“勤俭节约”混用，它们是反义词关系。</li>
+            </ul>
+            <h3 style="margin-bottom: 1rem; color: var(--primary-color);">常见误区</h3>
+            <p style="color: var(--text-secondary);">很多用户容易将“挥金如土”与“一掷千金”混淆。简单来说，“挥金如土”侧重于“随意、不在乎”，而“一掷千金”侧重于“豪爽、动作大”。前者更偏向于批评态度，后者则包含更多赞赏或中性色彩。</p>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="footer-content">
+        <div class="footer-col">
+            <h3>成语词典</h3>
+            <p style="font-size: 0.9rem; line-height: 1.6;">致力于提供准确、详实的成语释义与用法分析，帮助用户更好地理解和使用汉语成语。</p>
+        </div>
+        <div class="footer-col">
+            <h3>常用分类</h3>
+            <ul>
+                <li><a href="#">形容富贵的成语</a></li>
+                <li><a href="#">形容贫穷的成语</a></li>
+                <li><a href="#">形容勤奋的成语</a></li>
+                <li><a href="#">形容懒惰的成语</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h3>关于我们</h3>
+            <ul>
+                <li><a href="#">使用条款</a></li>
+                <li><a href="#">隐私政策</a></li>
+                <li><a href="#">意见反馈</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="copyright">
+        &copy; 2023 成语词典网. All Rights Reserved.
+    </div>
+</footer>
+
+</body>
+  </html>
