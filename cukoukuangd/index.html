@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="粗口狂Dj - 探索地下电子音乐文化，获取硬核DJ混音资源、现场演出资讯及电子音乐社区交流。">
+    <meta name="keywords" content="粗口狂Dj, 电子音乐, DJ混音, 硬核, 地下音乐, 现场演出">
+    <title>粗口狂Dj - 硬核电子音乐与地下混音资源站</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --bg-color: #0a0a0a;
+            --card-bg: #141414;
+            --text-main: #ffffff;
+            --text-muted: #a0a0a0;
+            --accent: #ff0033; /* 硬核红 */
+            --accent-hover: #cc0029;
+            --border-color: #333;
+            --font-stack: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: var(--font-stack);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* 布局容器 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: rgba(10, 10, 10, 0.95);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--accent);
+        }
+
+        .cta-btn {
+            background-color: var(--accent);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-btn:hover {
+            background-color: var(--accent-hover);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3), var(--bg-color)), url('https://picsum.photos/seed/djnight/1600/900') center/cover no-repeat;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 20px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            font-weight: 900;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.8);
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #ddd;
+            margin-bottom: 30px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+        }
+
+        /* Sections */
+        section {
+            padding: 60px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 28px;
+            font-weight: 700;
+            position: relative;
+            padding-left: 15px;
+        }
+
+        .section-title::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 5px;
+            bottom: 5px;
+            width: 4px;
+            background-color: var(--accent);
+        }
+
+        .view-all {
+            color: var(--text-muted);
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .view-all:hover {
+            color: var(--text-main);
+        }
+
+        /* Mix Grid */
+        .mix-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .mix-card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .mix-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 0, 51, 0.1);
+            border-color: var(--accent);
+        }
+
+        .card-image {
+            height: 180px;
+            width: 100%;
+            background-color: #222;
+            position: relative;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.8;
+        }
+
+        .card-overlay {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: var(--accent);
+            color: white;
+            padding: 4px 8px;
+            font-size: 12px;
+            font-weight: bold;
+            border-radius: 2px;
+        }
+
+        .card-content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-tag {
+            color: var(--accent);
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .card-meta {
+            margin-top: auto;
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            color: var(--text-muted);
+            padding-top: 15px;
+            border-top: 1px solid #222;
+        }
+
+        .play-btn {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .play-btn:hover {
+            background-color: var(--accent);
+        }
+
+        /* Community / Info */
+        .info-layout {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+        }
+
+        .news-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .news-item {
+            display: flex;
+            gap: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .news-date {
+            background-color: #222;
+            padding: 10px;
+            border-radius: 4px;
+            text-align: center;
+            min-width: 70px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .news-date .day {
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--text-main);
+        }
+
+        .news-date .month {
+            font-size: 12px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+
+        .news-content h3 {
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+
+        .news-content p {
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        .sidebar-box {
+            background-color: var(--card-bg);
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .sidebar-box h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            border-left: 3px solid var(--accent);
+            padding-left: 10px;
+        }
+
+        .genre-list li {
+            margin-bottom: 12px;
+        }
+
+        .genre-list a {
+            display: flex;
+            justify-content: space-between;
+            color: var(--text-muted);
+            font-size: 14px;
+            padding: 8px;
+            border-radius: 4px;
+        }
+
+        .genre-list a:hover {
+            background-color: rgba(255,255,255,0.05);
+            color: var(--text-main);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #050505;
+            padding: 60px 0 20px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--accent);
+        }
+
+        .copyright {
+            text-align: center;
+            color: #555;
+            font-size: 13px;
+            padding-top: 20px;
+            border-top: 1px solid #1a1a1a;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 32px; }
+            .header-inner { flex-direction: column; height: auto; padding: 15px 0; gap: 15px; }
+            nav ul { gap: 15px; font-size: 13px; }
+            .info-layout { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; gap: 30px; }
+            .mix-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-inner">
+            <a href="#" class="logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--accent)"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>
+                粗口狂<span>Dj</span>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">首页</a></li>
+                    <li><a href="#">最新混音</a></li>
+                    <li><a href="#">硬核现场</a></li>
+                    <li><a href="#">下载专区</a></li>
+                </ul>
+            </nav>
+            <button class="cta-btn">加入社区</button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>释放你的听觉本能</h1>
+                <p>汇聚全球地下电子音乐人，提供硬核Techno、DnB及工业风格DJ混音资源。拒绝平庸，只做最真实的声浪。</p>
+                <div style="display: flex; gap: 15px; justify-content: center;">
+                    <button class="cta-btn" style="padding: 12px 30px; font-size: 16px;">浏览最新混音</button>
+                    <button class="cta-btn" style="background: transparent; border: 1px solid white; padding: 12px 30px; font-size: 16px;">查看演出日程</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mix Resources Section -->
+        <section class="container">
+            <div class="section-header">
+                <h2 class="section-title">热门混音资源</h2>
+                <a href="#" class="view-all">查看全部 <span>&rarr;</span></a>
+            </div>
+            
+            <div class="mix-grid">
+                <!-- Card 1 -->
+                <article class="mix-card">
+                    <div class="card-image">
+                        <img src="https://picsum.photos/seed/techno1/400/300" alt="Techno Mix Cover">
+                        <span class="card-overlay">HOT</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-tag">Techno</div>
+                        <h3 class="card-title">午夜废墟：柏林地下场子直录 Vol.4</h3>
+                        <div class="card-meta">
+                            <span>2023-10-24</span>
+                            <div class="play-btn">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 2 -->
+                <article class="mix-card">
+                    <div class="card-image">
+                        <img src="https://picsum.photos/seed/dnb2/400/300" alt="DnB Mix Cover">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-tag">Drum & Bass</div>
+                        <h3 class="card-title">神经毒素：极速Bassline混剪</h3>
+                        <div class="card-meta">
+                            <span>2023-10-22</span>
+                            <div class="play-btn">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 3 -->
+                <article class="mix-card">
+                    <div class="card-image">
+                        <img src="https://picsum.photos/seed/hardcore3/400/300" alt="Hardcore Mix Cover">
+                        <span class="card-overlay">NEW</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-tag">Hardcore</div>
+                        <h3 class="card-title">撕裂边界：2023冬季硬核精选</h3>
+                        <div class="card-meta">
+                            <span>2023-10-20</span>
+                            <div class="play-btn">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 4 -->
+                <article class="mix-card">
+                    <div class="card-image">
+                        <img src="https://picsum.photos/seed/indie4/400/300" alt="Indie Mix Cover">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-tag">Indie Electronic</div>
+                        <h3 class="card-title">霓虹闪烁：复古合成器浪潮</h3>
+                        <div class="card-meta">
+                            <span>2023-10-18</span>
+                            <div class="play-btn">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Info & Community Section -->
+        <section class="container">
+            <div class="info-layout">
+                <div>
+                    <div class="section-header">
+                        <h2 class="section-title">最新动态</h2>
+                        <a href="#" class="view-all">更多资讯 <span>&rarr;</span></a>
+                    </div>
+                    <div class="news-list">
+                        <article class="news-item">
+                            <div class="news-date">
+                                <span class="day">24</span>
+                                <span class="month">OCT</span>
+                            </div>
+                            <div class="news-content">
+                                <h3>关于下个月“暗夜狂欢”线下派对的场地变更通知</h3>
+                                <p>受不可抗力影响，原定于10月30日的派对将移至地下3号仓举行。所有购票用户请留意群内通知...</p>
+                            </div>
+                        </article>
+                        <article class="news-item">
+                            <div class="news-date">
+                                <span class="day">22</span>
+                                <span class="month">OCT</span>
+                            </div>
+                            <div class="news-content">
+                                <h3>社区征稿：你最喜欢的DJ设备是什么？</h3>
+                                <p>无论是复古的Vestax还是现代的Traktor，欢迎在评论区分享你的装备和心得，优质评论者将获得限定徽章...</p>
+                            </div>
+                        </article>
+                        <article class="news-item">
+                            <div class="news-date">
+                                <span class="day">18</span>
+                                <span class="month">OCT</span>
+                            </div>
+                            <div class="news-content">
+                                <h3>新版下载站上线：支持无损音质与高码率FLAC</h3>
+                                <p>为了满足发烧友的需求，我们升级了服务器带宽，现在可以下载最高320kbps的MP3以及无损FLAC格式...</p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+
+                <aside>
+                    <div class="sidebar-box">
+                        <h3>风格分类</h3>
+                        <ul class="genre-list">
+                            <li><a href="#">Techno <span>128</span></a></li>
+                            <li><a href="#">Hardcore <span>85</span></a></li>
+                            <li><a href="#">Drum & Bass <span>64</span></a></li>
+                            <li><a href="#">Industrial <span>42</span></a></li>
+                            <li><a href="#">Ghetto House <span>33</span></a></li>
+                        </ul>
+                    </div>
+
+                    <div class="sidebar-box" style="margin-top: 20px; background: linear-gradient(45deg, #1a1a1a, #000); border: 1px solid var(--accent);">
+                        <h3 style="border-color: var(--accent);">社区指南</h3>
+                        <p style="font-size: 13px; color: #ccc; margin-bottom: 15px;">
+                            本站致力于分享未经剪辑的地下现场声音。请遵守当地法律法规，文明欣赏音乐。
+                        </p>
+                        <a href="#" class="cta-btn" style="width: 100%; text-align: center; font-size: 12px;">阅读社区公约</a>
+                    </div>
+                </aside>
+            </div>
+        </section>
+
+        <!-- Selection Guide Section -->
+        <section class="container">
+            <div class="section-header">
+                <h2 class="section-title">选曲指南</h2>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+                <div style="background: var(--card-bg); padding: 30px; border-radius: 8px; border: 1px solid var(--border-color);">
+                    <h3 style="margin-bottom: 15px; color: var(--accent);">如何辨别高质量混音？</h3>
+                    <p style="color: var(--text-muted); font-size: 14px;">
+                        优质混音通常具备精准的节拍对齐、良好的频段平衡以及独特的混音编排。我们在上传前会进行多重频谱分析，确保低频饱满且中高频清晰。
+                    </p>
+                </div>
+                <div style="background: var(--card-bg); padding: 30px; border-radius: 8px; border: 1px solid var(--border-color);">
+                    <h3 style="margin-bottom: 15px; color: var(--accent);">下载后的使用建议</h3>
+                    <p style="color: var(--text-muted); font-size: 14px;">
+                        混音文件主要用于个人欣赏、学习参考或非商业性质的派对试音。请勿将资源用于商业用途，尊重DJ创作者的版权与劳动成果。
+                    </p>
+                </div>
+                <div style="background: var(--card-bg); padding: 30px; border-radius: 8px; border: 1px solid var(--border-color);">
+                    <h3 style="margin-bottom: 15px; color: var(--accent);">常见问题 (FAQ)</h3>
+                    <p style="color: var(--text-muted); font-size: 14px;">
+                        <strong>Q: 支持在线试听吗？</strong><br>
+                        A: 支持。我们提供高码率的在线流媒体试听服务，无需下载即可预览。
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="#" class="logo" style="margin-bottom: 20px;">
+                        粗口狂<span>Dj</span>
+                    </a>
+                    <p style="color: var(--text-muted); font-size: 14px; max-width: 300px;">
+                        致力于推广地下电子音乐文化，连接全球乐迷与制作人，提供最纯粹的听觉体验。
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h4>资源</h4>
+                    <ul>
+                        <li><a href="#">最新混音</a></li>
+                        <li><a href="#">现场录音</a></li>
+                        <li><a href="#">音色库</a></li>
+                        <li><a href="#">下载工具</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>社区</h4>
+                    <ul>
+                        <li><a href="#">论坛版块</a></li>
+                        <li><a href="#">投稿指南</a></li>
+                        <li><a href="#">关于我们</a></li>
+                        <li><a href="#">联系站长</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>关注</h4>
+                    <ul>
+                        <li><a href="#">微博</a></li>
+                        <li><a href="#">微信公众号</a></li>
+                        <li><a href="#">网易云音乐</a></li>
+                        <li><a href="#">SoundCloud</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2023 粗口狂Dj. All Rights Reserved. 仅供学习交流使用，请支持正版音乐。
+            </div>
+        </div>
+    </footer>
+
+</body>
+                          </html>
