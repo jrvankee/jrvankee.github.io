@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="王嘉怡个人官方网站，收录王嘉怡最新影视作品、写真图集、新闻资讯及粉丝互动社区。">
+    <meta name="keywords" content="王嘉怡,王嘉怡写真,王嘉怡电影,王嘉怡电视剧,王嘉怡作品">
+    <title>王嘉怡-影视作品与个人资料展示</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #e67e22;
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-main: #333333;
+            --text-light: #7f8c8d;
+            --spacing-unit: 1rem;
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+        }
+
+        /* Header */
+        header {
+            background-color: var(--card-bg);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            font-weight: 500;
+            color: var(--text-main);
+            position: relative;
+        }
+
+        nav a:hover {
+            color: var(--accent-color);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--accent-color);
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 500px;
+            background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url('https://picsum.photos/seed/wangjiayi_hero/1920/1080');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 30px;
+            background-color: var(--accent-color);
+            color: white;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .btn:hover {
+            background-color: #d35400;
+            transform: translateY(-2px);
+        }
+
+        /* Section Styling */
+        section {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title p {
+            color: var(--text-light);
+        }
+
+        /* Profile Section */
+        .profile-grid {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 3rem;
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .profile-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .info-list dt {
+            font-weight: 600;
+            margin-top: 1rem;
+            color: var(--text-main);
+        }
+
+        .info-list dd {
+            margin-bottom: 0.5rem;
+            color: var(--text-light);
+        }
+
+        /* Works Grid */
+        .works-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .work-card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .work-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .work-poster {
+            width: 100%;
+            height: 380px;
+            object-fit: cover;
+            background-color: #eee;
+        }
+
+        .work-info {
+            padding: 1.5rem;
+        }
+
+        .work-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .work-meta {
+            font-size: 0.9rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .work-desc {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        /* Gallery Section */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        .gallery-item {
+            position: relative;
+            aspect-ratio: 3/4;
+            overflow: hidden;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* News List */
+        .news-list {
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 2rem;
+        }
+
+        .news-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .news-item:last-child {
+            border-bottom: none;
+        }
+
+        .news-date {
+            color: var(--accent-color);
+            font-weight: 600;
+            font-size: 0.9rem;
+            min-width: 100px;
+        }
+
+        .news-content h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .news-content p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 3rem 0;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-col h4 {
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-col ul li a {
+            color: #bdc3c7;
+        }
+
+        .footer-col ul li a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #7f8c8d;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-wrapper nav {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .profile-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-wrapper">
+            <div class="logo">王嘉怡<span>WangJiayi</span></div>
+            <nav>
+                <ul>
+                    <li><a href="#">首页</a></li>
+                    <li><a href="#profile">个人资料</a></li>
+                    <li><a href="#works">影视作品</a></li>
+                    <li><a href="#gallery">写真图集</a></li>
+                    <li><a href="#news">最新资讯</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-btn">☰</div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>王嘉怡</h1>
+                <p>专注表演艺术，用作品传递情感与力量</p>
+                <a href="#works" class="btn">查看作品</a>
+            </div>
+        </section>
+
+        <!-- Profile Section -->
+        <section id="profile" class="container">
+            <div class="section-title">
+                <h2>关于王嘉怡</h2>
+                <p>了解演员的成长历程与艺术理念</p>
+            </div>
+            <div class="profile-grid">
+                <img src="https://picsum.photos/seed/wangjiayi_profile/400/500" alt="王嘉怡写真" class="profile-img">
+                <div class="profile-info">
+                    <h3>王嘉怡</h3>
+                    <p style="margin-bottom: 1rem; color: var(--text-light);">中国内地女演员，毕业于中央戏剧学院表演系。以其细腻自然的表演风格和对角色深刻的理解力著称，擅长塑造具有层次感的人物形象。</p>
+                    
+                    <dl class="info-list">
+                        <dt>出生日期</dt>
+                        <dd>1998年5月12日</dd>
+                        <dt>出生地</dt>
+                        <dd>上海</dd>
+                        <dt>身高</dt>
+                        <dd>168 cm</dd>
+                        <dt>毕业院校</dt>
+                        <dd>中央戏剧学院</dd>
+                    </dl>
+                </div>
+            </div>
+        </section>
+
+        <!-- Works Section -->
+        <section id="works" style="background-color: #fff;">
+            <div class="container">
+                <div class="section-title">
+                    <h2>代表作品</h2>
+                    <p>精选影视剧目与舞台表演</p>
+                </div>
+                <div class="works-grid">
+                    <!-- Work 1 -->
+                    <article class="work-card">
+                        <img src="https://picsum.photos/seed/movie1/400/600" alt="电影海报" class="work-poster">
+                        <div class="work-info">
+                            <h3 class="work-title">迷雾追凶</h3>
+                            <div class="work-meta">2023年 · 犯罪剧情片</div>
+                            <p class="work-desc">饰演刑侦支队队长，在错综复杂的案件中抽丝剥茧，展现了角色的坚韧与智慧。</p>
+                        </div>
+                    </article>
+                    
+                    <!-- Work 2 -->
+                    <article class="work-card">
+                        <img src="https://picsum.photos/seed/movie2/400/600" alt="电影海报" class="work-poster">
+                        <div class="work-info">
+                            <h3 class="work-title">听见花开的声音</h3>
+                            <div class="work-meta">2022年 · 治愈爱情片</div>
+                            <p class="work-desc">主演文艺爱情电影，饰演一位失聪的钢琴家，用细腻的肢体语言诠释无声的情感。</p>
+                        </div>
+                    </article>
+
+                    <!-- Work 3 -->
+                    <article class="work-card">
+                        <img src="https://picsum.photos/seed/movie3/400/600" alt="电影海报" class="work-poster">
+                        <div class="work-info">
+                            <h3 class="work-title">都市边缘</h3>
+                            <div class="work-meta">2021年 · 都市职场剧</div>
+                            <p class="work-desc">饰演职场新人，在竞争激烈的环境中不断成长，引发了大量观众的共鸣。</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="gallery" class="container">
+            <div class="section-title">
+                <h2>写真图集</h2>
+                <p>捕捉光影中的每一个瞬间</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item"><img src="https://picsum.photos/seed/g1/300/400" alt="写真"></div>
+                <div class="gallery-item"><img src="https://picsum.photos/seed/g2/300/400" alt="写真"></div>
+                <div class="gallery-item"><img src="https://picsum.photos/seed/g3/300/400" alt="写真"></div>
+                <div class="gallery-item"><img src="https://picsum.photos/seed/g4/300/400" alt="写真"></div>
+                <div class="gallery-item"><img src="https://picsum.photos/seed/g5/300/400" alt="写真"></div>
+                <div class="gallery-item"><img src="https://picsum.photos/seed/g6/300/400" alt="写真"></div>
+                <div class="gallery-item"><img src="https://picsum.photos/seed/g7/300/400" alt="写真"></div>
+                <div class="gallery-item"><img src="https://picsum.photos/seed/g8/300/400" alt="写真"></div>
+            </div>
+        </section>
+
+        <!-- News Section -->
+        <section id="news" style="background-color: #fff;">
+            <div class="container">
+                <div class="section-title">
+                    <h2>最新资讯</h2>
+                    <p>关注王嘉怡的动态与活动</p>
+                </div>
+                <div class="news-list">
+                    <div class="news-item">
+                        <div class="news-date">2023.10.15</div>
+                        <div class="news-content">
+                            <h4>王嘉怡新电影《迷雾追凶》定档国庆档</h4>
+                            <p>王嘉怡主演的犯罪悬疑电影正式宣布将于国庆假期上映，影片将展现全新的角色形象。</p>
+                        </div>
+                    </div>
+                    <div class="news-item">
+                        <div class="news-date">2023.09.20</div>
+                        <div class="news-content">
+                            <h4>王嘉怡获颁年度最佳新人女演员奖</h4>
+                            <p>在近日举办的华语电影盛典上，王嘉怡凭借在多部作品中的出色表现斩获殊荣。</p>
+                        </div>
+                    </div>
+                    <div class="news-item">
+                        <div class="news-date">2023.08.05</div>
+                        <div class="news-content">
+                            <h4>王嘉怡受邀出席品牌年度时尚盛典</h4>
+                            <p>王嘉怡以一袭高定礼服亮相红毯，成为当晚焦点，并作为品牌代言人发表感言。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="container" style="text-align: center;">
+            <div style="background: linear-gradient(135deg, #2c3e50, #4ca1af); padding: 3rem; border-radius: 10px; color: white;">
+                <h2 style="margin-bottom: 1rem;">关注官方动态</h2>
+                <p style="margin-bottom: 2rem; opacity: 0.9;">第一时间获取演出信息、独家剧照及粉丝福利。</p>
+                <a href="#" class="btn" style="background-color: white; color: var(--primary-color);">关注微博</a>
+                <a href="#" class="btn" style="background-color: transparent; border: 2px solid white; margin-left: 10px;">加入粉丝群</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h4>王嘉怡 WangJiayi</h4>
+                    <p style="color: #bdc3c7; font-size: 0.9rem; line-height: 1.8;">
+                        致力于用优秀的作品回馈观众，不断探索表演艺术的边界。
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h4>快速导航</h4>
+                    <ul>
+                        <li><a href="#profile">个人资料</a></li>
+                        <li><a href="#works">影视作品</a></li>
+                        <li><a href="#gallery">写真图集</a></li>
+                        <li><a href="#news">新闻资讯</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>联系方式</h4>
+                    <ul>
+                        <li><a href="#">经纪公司合作</a></li>
+                        <li><a href="#">商务洽谈</a></li>
+                        <li><a href="#">粉丝信箱</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 王嘉怡官方网站 版权所有</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 简单的平滑滚动交互
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // 移动端菜单切换逻辑
+        const menuBtn = document.querySelector('.mobile-menu-btn');
+        const nav = document.querySelector('nav');
+        
+        menuBtn.addEventListener('click', () => {
+            const isVisible = nav.style.display === 'block';
+            nav.style.display = isVisible ? 'none' : 'block';
+            nav.style.flexDirection = 'column';
+            nav.style.position = 'absolute';
+            nav.style.top = '70px';
+            nav.style.left = '0';
+            nav.style.width = '100%';
+            nav.style.background = 'white';
+            nav.style.padding = '1rem';
+            nav.style.boxShadow = '0 5px 10px rgba(0,0,0,0.1)';
+        });
+    </script>
+</body>
+</html>
