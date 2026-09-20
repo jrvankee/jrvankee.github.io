@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="含羞草实验研究所专注于生物进化论与植物神经系统研究，提供科普文章、实验数据解析及在线互动模拟实验平台。">
+    <meta name="keywords" content="含羞草实验研究所,植物神经,生物实验,含羞草,科普,在线模拟">
+    <title>含羞草实验研究所-植物神经科学探索与在线模拟平台</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #2e7d32;
+            --primary-light: #e8f5e9;
+            --accent-color: #ff6f00;
+            --text-dark: #1b1b1b;
+            --text-gray: #5f6368;
+            --bg-body: #f9fafb;
+            --bg-card: #ffffff;
+            --border-radius: 8px;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+            --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-body);
+            color: var(--text-dark);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Header & Nav */
+        header {
+            background-color: var(--bg-card);
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            font-weight: 400;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--primary-color);
+        }
+
+        .btn-subscribe {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: background-color 0.2s;
+        }
+
+        .btn-subscribe:hover {
+            background-color: #1b5e20;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-light) 0%, #ffffff 100%);
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+
+        .hero-tags {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background-color: white;
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            color: var(--text-gray);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        /* Main Content Grid */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+            padding: 40px 0;
+        }
+
+        /* Section Titles */
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -11px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+
+        /* Featured Article */
+        .featured-card {
+            background-color: var(--bg-card);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 30px;
+        }
+
+        .featured-image {
+            width: 100%;
+            height: 300px;
+            background-color: #ddd;
+            object-fit: cover;
+        }
+
+        .featured-content {
+            padding: 25px;
+        }
+
+        .featured-meta {
+            font-size: 0.85rem;
+            color: var(--text-gray);
+            margin-bottom: 10px;
+        }
+
+        .featured-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+
+        .featured-excerpt {
+            color: var(--text-gray);
+            margin-bottom: 20px;
+        }
+
+        .read-more {
+            color: var(--primary-color);
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .read-more::after {
+            content: '→';
+            margin-left: 5px;
+            transition: transform 0.2s;
+        }
+
+        .read-more:hover::after {
+            transform: translateX(5px);
+        }
+
+        /* Article List */
+        .article-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .article-item {
+            background-color: var(--bg-card);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            gap: 20px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .article-item:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .article-thumb {
+            width: 120px;
+            height: 90px;
+            background-color: #eee;
+            border-radius: 4px;
+            flex-shrink: 0;
+            object-fit: cover;
+        }
+
+        .article-info {
+            flex: 1;
+        }
+
+        .article-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .article-summary {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        /* Sidebar */
+        aside {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .widget {
+            background-color: var(--bg-card);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .widget-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-light);
+        }
+
+        .stat-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 0.9rem;
+        }
+
+        .stat-list li:last-child {
+            border-bottom: none;
+        }
+
+        .stat-value {
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        /* Experiment Simulation Section */
+        .simulation-section {
+            background-color: var(--bg-card);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            margin-top: 40px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .sim-interface {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            background-color: #fafafa;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        .sim-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 15px;
+            margin-bottom: 10px;
+        }
+
+        .sim-controls {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .sim-btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: opacity 0.2s;
+        }
+
+        .btn-touch {
+            background-color: #e0f2f1;
+            color: #00695c;
+        }
+
+        .btn-reset {
+            background-color: #ffebee;
+            color: #c62828;
+        }
+
+        .sim-btn:hover {
+            opacity: 0.8;
+        }
+
+        .sim-plant-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+            position: relative;
+        }
+
+        .leaf {
+            width: 100px;
+            height: 50px;
+            background-color: #81c784;
+            border-radius: 0 100px 0 100px;
+            position: absolute;
+            transition: transform 0.5s ease-in-out, background-color 0.3s;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .leaf.top {
+            transform: rotate(-30deg);
+            top: 0;
+            left: 50px;
+            transform-origin: bottom left;
+        }
+
+        .leaf.bottom {
+            transform: rotate(30deg);
+            bottom: 0;
+            left: 50px;
+            transform-origin: top left;
+        }
+
+        .leaf.closing {
+            transform: rotate(0deg);
+            background-color: #66bb6a;
+        }
+
+        .sim-status {
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            min-height: 1.5em;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 40px 0;
+        }
+
+        .faq-item {
+            background-color: var(--bg-card);
+            margin-bottom: 15px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-sm);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #fff;
+        }
+
+        .faq-answer {
+            padding: 0 20px 20px;
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            display: none;
+            border-top: 1px solid #f5f5f5;
+            padding-top: 15px;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .faq-item.active .faq-question {
+            background-color: #f1f8e9;
+            color: var(--primary-color);
+        }
+
+        .icon-plus {
+            width: 20px;
+            height: 20px;
+            border: 2px solid currentColor;
+            border-radius: 3px;
+            position: relative;
+        }
+
+        .icon-plus::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 10px;
+            height: 2px;
+            background-color: currentColor;
+            transform: translate(-50%, -50%);
+        }
+
+        .faq-item.active .icon-plus::after {
+            width: 2px;
+            height: 10px;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: auto;
+            background-color: #263238;
+            color: #cfd8dc;
+            padding: 40px 0 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #37474f;
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .article-item {
+                flex-direction: column;
+            }
+
+            .article-thumb {
+                width: 100%;
+                height: 180px;
+            }
+
+            .header-inner {
+                flex-direction: column;
+                height: auto;
+                padding: 15px 0;
+                gap: 15px;
+            }
+
+            nav ul {
+                gap: 15px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-inner">
+            <a href="#" class="logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                    <path d="M12 6v6l4 2"/>
+                </svg>
+                含羞草实验研究所
+                <span>Mimosa Research Lab</span>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">首页</a></li>
+                    <li><a href="#">科普专栏</a></li>
+                    <li><a href="#">实验数据</a></li>
+                    <li><a href="#">在线模拟</a></li>
+                    <li><a href="#">关于我们</a></li>
+                </ul>
+            </nav>
+            <a href="#" class="btn-subscribe">加入社区</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>探索植物的“神经系统”</h1>
+                <p>欢迎来到含羞草实验研究所。我们致力于解析植物对刺激的反应机制，通过科学实验与可视化模拟，揭开自然界中植物运动的奥秘。</p>
+                <div class="hero-tags">
+                    <span class="tag">植物电生理</span>
+                    <span class="tag">运动神经</span>
+                    <span class="tag">环境应激</span>
+                    <span class="tag">生物进化</span>
+                </div>
+            </div>
+        </section>
+
+        <div class="container">
+            <div class="content-grid">
+                <!-- Main Content Area -->
+                <div class="main-column">
+                    
+                    <!-- Featured Article -->
+                    <article class="featured-card">
+                        <img src="https://picsum.photos/seed/mimosa1/800/400" alt="含羞草叶片微观结构" class="featured-image">
+                        <div class="featured-content">
+                            <div class="featured-meta">2023年10月24日 · 实验室报告</div>
+                            <h2 class="featured-title">含羞草叶片闭合的分子机制：不仅仅是简单的反射</h2>
+                            <p class="featured-excerpt">长期以来，人们认为含羞草的闭合反应是简单的反射弧作用。最新研究表明，这涉及到复杂的离子通道调节和电信号传导。本文详细解析了从触碰到叶片闭合的毫秒级过程。</p>
+                            <a href="#" class="read-more">阅读完整报告</a>
+                        </div>
+                    </article>
+
+                    <!-- Latest Articles -->
+                    <div class="section-header">
+                        <h3 class="section-title">最新实验动态</h3>
+                        <a href="#" style="font-size: 0.9rem; color: var(--primary-color);">查看全部</a>
+                    </div>
+
+                    <div class="article-list">
+                        <article class="article-item">
+                            <img src="https://picsum.photos/seed/mimosa2/200/150" alt="实验记录" class="article-thumb">
+                            <div class="article-info">
+                                <h4 class="article-title"><a href="#">为什么含羞草在夜间会自动闭合？</a></h4>
+                                <p class="article-summary">通过连续24小时的观察实验，我们发现含羞草的昼夜节律对其叶片状态有显著影响，夜间闭合并非完全由外界刺激引起。</p>
+                            </div>
+                        </article>
+
+                        <article class="article-item">
+                            <img src="https://picsum.photos/seed/mimosa3/200/150" alt="土壤湿度测试" class="article-thumb">
+                            <div class="article-info">
+                                <h4 class="article-title"><a href="#">土壤湿度对含羞草应激反应的影响</a></h4>
+                                <p class="article-summary">在干旱环境下，含羞草的叶片闭合速度明显加快。这可能是植物的一种自我保护机制，以减少水分蒸发。</p>
+                            </div>
+                        </article>
+
+                        <article class="article-item">
+                            <img src="https://picsum.photos/seed/mimosa4/200/150" alt="光照强度" class="article-thumb">
+                            <div class="article-info">
+                                <h4 class="article-title"><a href="#">强光照射下的含羞草行为变化</a></h4>
+                                <p class="article-summary">实验数据记录显示，在超过一定光照强度后，含羞草表现出“睡眠运动”，即叶片垂直向下以保护叶绿体。</p>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- Interactive Simulation -->
+                    <section class="simulation-section">
+                        <div class="section-header">
+                            <h3 class="section-title">在线模拟实验室</h3>
+                        </div>
+                        <p style="margin-bottom: 15px; color: var(--text-gray); font-size: 0.9rem;">
+                            点击下方按钮模拟外界刺激（触碰或强光），观察含羞草叶片的应激反应。
+                        </p>
+                        <div class="sim-interface">
+                            <div class="sim-header">
+                                <span>状态监测：正常生长</span>
+                                <div class="sim-controls">
+                                    <button class="sim-btn btn-touch" onclick="triggerTouch()">模拟触碰</button>
+                                    <button class="sim-btn btn-reset" onclick="resetPlant()">重置状态</button>
+                                </div>
+                            </div>
+                            <div class="sim-plant-container" id="plantContainer">
+                                <div class="leaf top" id="leafTop"></div>
+                                <div class="leaf bottom" id="leafBottom"></div>
+                            </div>
+                            <div class="sim-status" id="simStatus">等待实验指令...</div>
+                        </div>
+                    </section>
+
+                    <!-- FAQ Section -->
+                    <section class="faq-section">
+                        <div class="section-header">
+                            <h3 class="section-title">常见问题 (FAQ)</h3>
+                        </div>
+                        
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                含羞草为什么碰一下就会合上？
+                                <div class="icon-plus"></div>
+                            </div>
+                            <div class="faq-answer">
+                                这是含羞草为了保护自己免受食草动物侵害而演化出的一种防御机制。当叶片受到触碰时，细胞内的水分会迅速流向细胞间隙，导致叶片萎蔫闭合。这在植物学上被称为“感性运动”。
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                含羞草有毒吗？
+                                <div class="icon-plus"></div>
+                            </div>
+                            <div class="faq-answer">
+                                含羞草含有微量的含羞草碱，这是一种含羞草苷。虽然少量接触通常无害，但长期大量接触或误食可能会对人类和家畜的神经系统产生轻微影响，因此不建议随意食用。
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                如何在家种植并观察含羞草？
+                                <div class="icon-plus"></div>
+                            </div>
+                            <div class="faq-answer">
+                                含羞草生命力顽强，适合新手种植。选择疏松透气的土壤，保持湿润但不积水，放置在散射光处即可。注意不要频繁过度触碰，以免影响其正常生长。
+                            </div>
+                        </div>
+                    </section>
+
+                </div>
+
+                <!-- Sidebar -->
+                <aside class="sidebar">
+                    
+                    <!-- Research Stats -->
+                    <div class="widget">
+                        <h4 class="widget-title">年度研究数据</h4>
+                        <ul class="stat-list">
+                            <li><span>观测样本总数</span> <span class="stat-value">1,240</span></li>
+                            <li><span>实验记录天数</span> <span class="stat-value">365</span></li>
+                            <li><span>发表论文</span> <span class="stat-value">18</span></li>
+                            <li><span>活跃志愿者</span> <span class="stat-value">850</span></li>
+                        </ul>
+                    </div>
+
+                    <!-- Categories -->
+                    <div class="widget">
+                        <h4 class="widget-title">实验分类</h4>
+                        <ul style="line-height: 2;">
+                            <li><a href="#">• 植物电信号</a></li>
+                            <li><a href="#">• 光合作用影响</a></li>
+                            <li><a href="#">• 土壤酸碱度测试</a></li>
+                            <li><a href="#">• 运动神经模拟</a></li>
+                            <li><a href="#">• 进化生物学</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Newsletter -->
+                    <div class="widget">
+                        <h4 class="widget-title">订阅实验室简报</h4>
+                        <p style="font-size: 0.85rem; color: var(--text-gray); margin-bottom: 15px;">
+                            每周获取最新的植物实验数据与科普文章。
+                        </p>
+                        <form onsubmit="event.preventDefault(); alert('订阅成功！感谢您的关注。');" style="display: flex; flex-direction: column; gap: 10px;">
+                            <input type="email" placeholder="您的邮箱地址" required style="padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+                            <button type="submit" class="btn-subscribe" style="width: 100%; border-radius: 4px;">立即订阅</button>
+                        </form>
+                    </div>
+
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>含羞草实验研究所</h4>
+                    <p style="font-size: 0.9rem; line-height: 1.6;">
+                        我们是非营利性的植物科学探索平台，致力于通过现代科学手段解读传统植物学现象。
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h4>快速导航</h4>
+                    <ul>
+                        <li><a href="#">关于我们</a></li>
+                        <li><a href="#">研究团队</a></li>
+                        <li><a href="#">志愿者招募</a></li>
+                        <li><a href="#">联系方式</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>相关资源</h4>
+                    <ul>
+                        <li><a href="#">植物百科</a></li>
+                        <li><a href="#">实验器材推荐</a></li>
+                        <li><a href="#">学术引用规范</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2023 含羞草实验研究所. All Rights Reserved. 本网站内容仅供科普参考，请勿模仿危险实验。
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Interactive Logic for the Plant Simulation
+        const leafTop = document.getElementById('leafTop');
+        const leafBottom = document.getElementById('leafBottom');
+        const simStatus = document.getElementById('simStatus');
+        let isClosed = false;
+
+        function triggerTouch() {
+            if (isClosed) return;
+
+            // Visual feedback
+            simStatus.textContent = "检测到触碰刺激 -> 电信号传导中...";
+            simStatus.style.color = "#ff6f00";
+
+            // Trigger animation
+            setTimeout(() => {
+                leafTop.classList.add('closing');
+                leafBottom.classList.add('closing');
+                isClosed = true;
+                simStatus.textContent = "状态：叶片已闭合 (防御模式)";
+                simStatus.style.color = "#2e7d32";
+            }, 500);
+        }
+
+        function resetPlant() {
+            if (!isClosed) {
+                simStatus.textContent = "植物当前处于张开状态，无需重置。";
+                return;
+            }
+
+            simStatus.textContent = "正在解除应激状态...";
+            
+            // Remove animation class to reset
+            leafTop.classList.remove('closing');
+            leafBottom.classList.remove('closing');
+            
+            isClosed = false;
+            
+            setTimeout(() => {
+                simStatus.textContent = "状态：恢复自然生长";
+                simStatus.style.color = "#5f6368";
+            }, 500);
+        }
+
+        // FAQ Toggle Logic
+        const faqItems = document.querySelectorAll('.faq-item');
+
+        faqItems.forEach(item => {
+            item.querySelector('.faq-question').addEventListener('click', () => {
+                // Close others
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                // Toggle current
+                item.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+  </html>
