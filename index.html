@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="张津渝官方网站，提供高清写真、影视作品、个人简介及粉丝互动资讯。">
+    <meta name="keywords" content="张津渝,写真,影视,个人简介,资讯">
+    <title>张津渝-个人写真与影视作品官方资讯平台</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #e63946;
+            --secondary-color: #1d3557;
+            --accent-color: #f1faee;
+            --text-color: #333;
+            --light-text: #666;
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --spacing-unit: 1rem;
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Layout Utilities */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+        }
+
+        .section {
+            padding: 4rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 2rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary-color);
+            margin: 0.5rem auto 0;
+        }
+
+        .section-header p {
+            color: var(--light-text);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--card-bg);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--secondary-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo span {
+            color: var(--primary-color);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            font-weight: 500;
+            font-size: 1rem;
+            color: var(--secondary-color);
+        }
+
+        nav a:hover {
+            color: var(--primary-color);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--secondary-color) 0%, #457b9d 100%);
+            color: white;
+            padding: 5rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('https://picsum.photos/seed/zhangzhiyu_hero/1920/1080');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid white;
+            color: white;
+            margin-left: 1rem;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Profile Section */
+        .profile-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .profile-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+
+        .profile-avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            object-fit: cover;
+            border: 4px solid var(--accent-color);
+        }
+
+        .profile-info h3 {
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+        }
+
+        .profile-info p {
+            color: var(--light-text);
+            margin-bottom: 0.5rem;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tag {
+            background-color: var(--accent-color);
+            color: var(--secondary-color);
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+        }
+
+        .profile-detail {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+
+        .profile-detail h3 {
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .detail-list li {
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .detail-list strong {
+            color: var(--secondary-color);
+        }
+
+        /* Gallery Section */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            aspect-ratio: 3/4;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            padding: 1.5rem;
+            color: white;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        /* Works Section */
+        .works-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .work-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .work-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .work-thumb {
+            height: 200px;
+            background-color: #eee;
+            position: relative;
+        }
+        
+        .work-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .play-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50px;
+            height: 50px;
+            background: rgba(0,0,0,0.6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .work-info {
+            padding: 1.5rem;
+        }
+
+        .work-category {
+            font-size: 0.8rem;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: bold;
+        }
+
+        .work-title {
+            font-size: 1.2rem;
+            margin: 0.5rem 0;
+            color: var(--secondary-color);
+        }
+
+        .work-desc {
+            font-size: 0.9rem;
+            color: var(--light-text);
+            line-height: 1.5;
+        }
+
+        /* FAQ Section */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--card-bg);
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: var(--secondary-color);
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            color: var(--light-text);
+        }
+
+        .faq-item.active .faq-answer {
+            padding-bottom: 1.5rem;
+            max-height: 200px;
+        }
+
+        .faq-item.active .faq-question {
+            color: var(--primary-color);
+        }
+
+        .icon-plus {
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .icon-plus {
+            transform: rotate(45deg);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 4rem 0 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-col h4 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-color);
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-col ul li a {
+            color: rgba(255,255,255,0.7);
+        }
+
+        .footer-col ul li a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.5);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-wrapper {
+                flex-direction: column;
+                height: auto;
+                padding: 1rem 0;
+            }
+
+            nav ul {
+                margin-top: 1rem;
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .profile-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 3rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-wrapper">
+            <a href="#" class="logo">张<span>津渝</span>官方网站</a>
+            <nav>
+                <ul>
+                    <li><a href="#profile">个人简介</a></li>
+                    <li><a href="#gallery">写真集</a></li>
+                    <li><a href="#works">影视作品</a></li>
+                    <li><a href="#news">最新资讯</a></li>
+                    <li><a href="#faq">常见问题</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container hero-content">
+                <h1>张津渝</h1>
+                <p>专注于时尚摄影与影视表演的艺术创作者，用镜头记录美好，用角色诠释人生。</p>
+                <div>
+                    <a href="#gallery" class="btn btn-primary">浏览写真</a>
+                    <a href="#works" class="btn btn-outline">观看作品</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Profile Section -->
+        <section id="profile" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>关于张津渝</h2>
+                    <p>了解她的个人背景、职业经历及艺术理念</p>
+                </div>
+                <div class="profile-grid">
+                    <div class="profile-card">
+                        <img src="https://picsum.photos/seed/zhangzhiyu_avatar/300/300" alt="张津渝头像" class="profile-avatar">
+                        <h3>张津渝</h3>
+                        <p style="color: var(--light-text); margin-bottom: 1rem;">中国内地女演员 / 模特</p>
+                        <div class="tags">
+                            <span class="tag">时尚</span>
+                            <span class="tag">影视</span>
+                            <span class="tag">摄影</span>
+                        </div>
+                    </div>
+                    <div class="profile-detail">
+                        <h3>个人履历</h3>
+                        <ul class="detail-list">
+                            <li><strong>出生地：</strong>中国，四川</li>
+                            <li><strong>职业身份：</strong>影视演员、平面模特</li>
+                            <li><strong>代表作品：</strong>《某某电影》、《某部电视剧》</li>
+                            <li><strong>艺术特点：</strong>气质独特，擅长驾驭多种风格，从清新自然到成熟御姐均有涉猎。</li>
+                            <li><strong>从业经历：</strong>早年从事平面模特工作，后转型进入影视圈，参与拍摄多部影视作品及广告，积累了丰富的表演经验。</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="gallery" class="section" style="background-color: #fff;">
+            <div class="container">
+                <div class="section-header">
+                    <h2>精选写真</h2>
+                    <p>捕捉光影瞬间的艺术表达，展现多面魅力</p>
+                </div>
+                <div class="gallery-grid">
+                    <article class="gallery-item">
+                        <img src="https://picsum.photos/seed/zzy1/400/533" alt="张津渝写真1">
+                        <div class="gallery-overlay">
+                            <h4>都市霓虹</h4>
+                            <p>时尚摄影系列</p>
+                        </div>
+                    </article>
+                    <article class="gallery-item">
+                        <img src="https://picsum.photos/seed/zzy2/400/533" alt="张津渝写真2">
+                        <div class="gallery-overlay">
+                            <h4>静谧时光</h4>
+                            <p>人像写真系列</p>
+                        </div>
+                    </article>
+                    <article class="gallery-item">
+                        <img src="https://picsum.photos/seed/zzy3/400/533" alt="张津渝写真3">
+                        <div class="gallery-overlay">
+                            <h4>春日序曲</h4>
+                            <p>清新风格作品</p>
+                        </div>
+                    </article>
+                    <article class="gallery-item">
+                        <img src="https://picsum.photos/seed/zzy4/400/533" alt="张津渝写真4">
+                        <div class="gallery-overlay">
+                            <h4>黑白印象</h4>
+                            <p>极简主义风格</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Works Section -->
+        <section id="works" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>影视作品</h2>
+                    <p>她在银幕上的精彩演绎与角色塑造</p>
+                </div>
+                <div class="works-grid">
+                    <div class="work-card">
+                        <div class="work-thumb">
+                            <img src="https://picsum.photos/seed/work1/400/300" alt="作品封面">
+                            <div class="play-icon">▶</div>
+                        </div>
+                        <div class="work-info">
+                            <div class="work-category">电影</div>
+                            <h3 class="work-title">《光影之间》</h3>
+                            <p class="work-desc">一部关于都市情感与梦想的现代电影，张津渝在片中饰演核心女主角，展现了细腻的情感层次。</p>
+                        </div>
+                    </div>
+                    <div class="work-card">
+                        <div class="work-thumb">
+                            <img src="https://picsum.photos/seed/work2/400/300" alt="作品封面">
+                            <div class="play-icon">▶</div>
+                        </div>
+                        <div class="work-info">
+                            <div class="work-category">电视剧</div>
+                            <h3 class="work-title">《都市节奏》</h3>
+                            <p class="work-desc">热门都市职场剧，饰演一位干练的职场女性，剧情紧凑，深受观众喜爱。</p>
+                        </div>
+                    </div>
+                    <div class="work-card">
+                        <div class="work-thumb">
+                            <img src="https://picsum.photos/seed/work3/400/300" alt="作品封面">
+                            <div class="play-icon">▶</div>
+                        </div>
+                        <div class="work-info">
+                            <div class="work-category">网络电影</div>
+                            <h3 class="work-title">《夜行记》</h3>
+                            <p class="work-desc">悬疑题材网络大电影，张津渝挑战高难度动作戏份，表现可圈可点。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- News/Updates Section -->
+        <section id="news" class="section" style="background-color: #fff;">
+            <div class="container">
+                <div class="section-header">
+                    <h2>最新动态</h2>
+                    <p>关注她的最新行程与公开活动</p>
+                </div>
+                <div class="works-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+                    <article style="border-left: 3px solid var(--primary-color); padding-left: 1rem;">
+                        <time style="font-size: 0.85rem; color: var(--light-text);">2023-10-15</time>
+                        <h4 style="margin: 0.5rem 0;">参加秋季时尚盛典</h4>
+                        <p style="font-size: 0.9rem; color: var(--light-text);">受邀出席某知名时尚盛典，以一袭红裙造型惊艳全场，成为媒体镜头焦点。</p>
+                    </article>
+                    <article style="border-left: 3px solid var(--primary-color); padding-left: 1rem;">
+                        <time style="font-size: 0.85rem; color: var(--light-text);">2023-09-20</time>
+                        <h4 style="margin: 0.5rem 0;">新剧开机仪式</h4>
+                        <p style="font-size: 0.9rem; color: var(--light-text);">主演的都市情感剧正式开机，剧组透露角色设定与以往形象大不相同。</p>
+                    </article>
+                    <article style="border-left: 3px solid var(--primary-color); padding-left: 1rem;">
+                        <time style="font-size: 0.85rem; color: var(--light-text);">2023-08-05</time>
+                        <h4 style="margin: 0.5rem 0;">个人写真集发布</h4>
+                        <p style="font-size: 0.9rem; color: var(--light-text);">最新个人写真集《时光印记》正式发售，记录了她在不同季节的美丽瞬间。</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>常见问题</h2>
+                    <p>关于张津渝的粉丝互动与常见疑问解答</p>
+                </div>
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            如何获取张津渝的最新作品资讯？
+                            <span class="icon-plus">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            您可以关注本官方网站的“最新动态”栏目，或通过官方社交媒体账号获取第一手消息。
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            张津渝是否有粉丝见面会计划？
+                            <span class="icon-plus">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            我们会定期举办粉丝见面会，具体时间和地点请关注官方公告。
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            如何联系官方进行商务合作？
+                            <span class="icon-plus">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            商务合作请通过官方邮箱联系，我们会安排专人处理。
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h4>张津渝官方网站</h4>
+                    <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem;">致力于为粉丝提供最全面、最真实的艺人资讯与作品展示。</p>
+                </div>
+                <div class="footer-col">
+                    <h4>快速链接</h4>
+                    <ul>
+                        <li><a href="#profile">个人简介</a></li>
+                        <li><a href="#gallery">写真集</a></li>
+                        <li><a href="#works">影视作品</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>联系方式</h4>
+                    <ul>
+                        <li><a href="#">官方邮箱</a></li>
+                        <li><a href="#">商务合作</a></li>
+                        <li><a href="#">粉丝团</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 张津渝官方网站 版权所有.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ Accordion Logic
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.faq-item');
+
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', () => {
+                    // Close other items
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    // Toggle current item
+                    item.classList.toggle('active');
+                });
+            });
+        });
+    </script>
+</body>
+                              </html>
